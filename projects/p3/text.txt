@@ -1,6 +1,6 @@
-titleKo: 세 번째 프로젝트
-descKo: 설명을 여기에 입력하세요.
-titleEn: Third Project
-descEn: Description goes here.
-layout: img img img img img img img img
-images: Artboard4.png envelope.png martyrs_fin06107.jpg martyrs_fin06108.jpg martyrs_fin06109.jpg Scan27.jpeg Scan29.jpeg pietro.png
+titleKo: 서울대 종합화 80주년 기념 총동창회 달력
+descKo: 6인 팀 작업 — 달력면 편집디자인 담당.
+titleEn: 80th Anniversary SNU Alumni Calendar
+descEn: Team project of six — responsible for editorial design of the calendar spreads.
+layout: text img img
+images: birdeye_July.png screen1.png

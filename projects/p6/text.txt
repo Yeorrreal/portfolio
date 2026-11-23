@@ -1,6 +1,6 @@
-titleKo: 프로젝트 6
+titleKo: 프로젝트 9
 descKo: 
-titleEn: Project 6
+titleEn: Project 9
 descEn: 
-layout: img img img img img
-images: https://www.youtube.com/watch?v=67QNfOF6r9o screen1.png screen2.png screen3.png screen4.png
+layout: img img
+images: Artboard1.png poster2.png

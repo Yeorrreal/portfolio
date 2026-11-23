@@ -223,6 +223,19 @@
       line-height: 1.3;
       display: block;
     }
+    .proj-play-btn {
+      display: inline-block;
+      margin-top: 12px;
+      font-family: 'ABC Gaisyr Edu', serif;
+      font-size: 12px;
+      font-weight: 450;
+      color: #000;
+      text-decoration: none;
+      border: 0.5px solid #000;
+      padding: 4px 10px;
+      letter-spacing: 0.5px;
+    }
+    .proj-play-btn:hover { background: #000; color: #fff; }
 
     /* 단일 이미지 슬롯 */
     .img-slot {
@@ -382,6 +395,7 @@ function parseTxt(txt, folder) {
   return {
     titleKo: get('titleKo'), descKo: get('descKo'),
     titleEn: get('titleEn'), descEn: get('descEn'),
+    playUrl: get('playUrl'),
     layout: layoutRaw, images
   };
 }
@@ -448,6 +462,7 @@ function buildRow(p) {
             <span class="proj-title-en">${p.titleEn}</span>
             <span class="proj-desc-en">${p.descEn}</span>
           </div>
+          ${p.playUrl ? `<a class="proj-play-btn" href="${p.playUrl}" target="_blank" rel="noopener">▶ Play</a>` : ''}
         </div>`;
     }
     if (item === 'grid') {

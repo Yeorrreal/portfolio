@@ -1,6 +1,6 @@
-titleKo: 아고라 링
-descKo: 고대 철학자들의 논쟁을 링 위의 싸움으로 재해석한 철학 게임.
-titleEn: Agora Ring
-descEn: A philosophy game reinterpreting the debates of ancient philosophers as bouts in a boxing ring.
-layout: text img img img img img img img
-images: img0.jpeg img1.jpg img2.jpg img3.jpg img4.jpg img5.jpg img6.jpg
+titleKo: 프로젝트 8
+descKo: 
+titleEn: Project 8
+descEn: 
+layout: img img img img img img
+images: https://www.youtube.com/watch?v=7IAPdtHZ_xo 최종_1142.png 최종_1184.png 최종_1412.png 최종_1496.png 최종_1598.png

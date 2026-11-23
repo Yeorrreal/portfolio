@@ -1,6 +1,6 @@
-titleKo: 프로젝트 7
-descKo: 
-titleEn: Project 7
-descEn: 
-layout: img
-images: https://www.youtube.com/watch?v=W0FLvXiSDm4
+titleKo: 1995 호그와트
+descKo: 〈해리 포터 시리즈〉가 1990년대 중후반을 배경으로 한다는 점에서 착안해 당시의 잡지 편집방식을 디자인으로 치환한 실험적 프로젝트.
+titleEn: 1995 Hogwarts
+descEn: Editorial experiment of designing Harry Potter series with mid 90's magazine method based on the fact that Harry Potter series sets on mid-late 90's.
+layout: text img img img img img img
+images: img1.png img2.png img3.png img4.png img5.png img6.png

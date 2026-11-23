@@ -1,6 +1,6 @@
-titleKo: 프로젝트 8
+titleKo: 프로젝트 6
 descKo: 
-titleEn: Project 8
+titleEn: Project 6
 descEn: 
-layout: img img img img img img
-images: https://www.youtube.com/watch?v=7IAPdtHZ_xo 최종_1142.png 최종_1184.png 최종_1412.png 최종_1496.png 최종_1598.png
+layout: img img img img img
+images: https://www.youtube.com/watch?v=67QNfOF6r9o screen1.png screen2.png screen3.png screen4.png

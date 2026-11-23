@@ -1,6 +1,7 @@
-titleKo: 문자로 누르다
-descKo: 10여년 전 초등학생의 일기와 고등학교 이후부터 20대 초반까지의 두 종류의 일기를 비교한 작업. 문자로 경험과 생각을 정제하여 작성했던 글을 현재 시점에 다시 정리해보았다.
-titleEn: Press with Word
-descEn: A comparative study of two diaries — one written as an elementary school student over ten years ago, and another kept from high school through early adulthood. The project revisits and reorders writings that once distilled experience and thought into language.
-layout: text img img img img img
-images: 아카이빙7.jpg 아카이빙9.jpg 아카이빙10.jpg 아카이빙11.jpg 아카이빙12.jpg
+titleKo: 아고라 링
+descKo: 고대 철학자들의 논쟁을 링 위의 싸움으로 재해석한 철학 게임.
+titleEn: Agora Ring
+descEn: A philosophy game reinterpreting the debates of ancient philosophers as bouts in a boxing ring.
+playUrl: https://yeorrreal.github.io/agora-ring/?fbclid=PAdGRleAVGP8VleHRuA2FlbQIxMQBwZG9mAmZkaWQWUQxGYlW9HZCwR2PyyAhA_Ri4hqCMKXNydGMGYXBwX2lkDzEyNDAyNDU3NDI4NzQxNAABp81D_qL4plh4gWyK8_gsDJpJ-Ak6y_-lIRV4OGWDtKHkXtO2XC4ZqwAvwFu1_aem_GL3x7_lrXN9YDuhSFp9zMQ
+layout: text img img img img img img img
+images: img0.jpeg img1.jpg img2.jpg img3.jpg img4.jpg img5.jpg img6.jpg
