@@ -232,6 +232,26 @@
       cursor: pointer;
       display: flex;
       align-items: flex-start;
+      position: relative;
+    }
+    .yt-play {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+    .yt-play::after {
+      content: '';
+      width: 56px;
+      height: 40px;
+      background: rgba(0,0,0,0.7);
+      border-radius: 8px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M8 5v14l11-7z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 28px;
     }
     .img-slot img,
     .img-slot video {
@@ -386,16 +406,30 @@ const DIV_SVG  = 'assets/divider-h.svg';
 
 function isVid(src) { return /\.(mp4|mov|webm)$/i.test(src); }
 
+function ytId(src) {
+  const m = src.match(/[?&]v=([^&]+)/);
+  return m ? m[1] : null;
+}
+
 function slot(src) {
-  let inner;
-  if (!src) {
-    inner = `<div class="img-ph"></div>`;
-  } else if (isVid(src)) {
-    inner = `<video src="${src}" muted loop playsinline preload="metadata"></video>`;
-  } else {
-    inner = `<img src="${src}" alt="" draggable="false">`;
+  if (!src) return `<div class="img-slot"><div class="img-ph"></div></div>`;
+
+  const yt = ytId(src);
+  if (yt) {
+    const thumb = `https://img.youtube.com/vi/${yt}/hqdefault.jpg`;
+    return `<div class="img-slot" data-yt="${src}">` +
+      `<img src="${thumb}" alt="" draggable="false">` +
+      `<div class="yt-play"></div>` +
+      `</div>`;
   }
-  return `<div class="img-slot"${src?` data-src="${src}"`:''}>${inner}</div>`;
+  if (isVid(src)) {
+    return `<div class="img-slot" data-src="${src}">` +
+      `<video src="${src}" muted loop playsinline preload="metadata"></video>` +
+      `</div>`;
+  }
+  return `<div class="img-slot" data-src="${src}">` +
+    `<img src="${src}" alt="" draggable="false">` +
+    `</div>`;
 }
 
 function buildRow(p) {
@@ -489,11 +523,13 @@ function setupDrag() {
       strip.style.transform = `translateX(${newX}px)`;
     }, { passive: false });
 
-    /* 클릭 → 라이트박스 */
+    /* 클릭 → YouTube or 라이트박스 */
     strip.addEventListener('click', e => {
       if (moved) return;
-      const s = e.target.closest('[data-src]');
-      if (s) openLb(s.dataset.src);
+      const s = e.target.closest('[data-yt]');
+      if (s) { window.open(s.dataset.yt, '_blank'); return; }
+      const t = e.target.closest('[data-src]');
+      if (t) openLb(t.dataset.src);
     });
   });
 }

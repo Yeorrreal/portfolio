@@ -3,4 +3,4 @@ descKo:
 titleEn: Project 6
 descEn: 
 layout: img img img img img
-images: screen1.png screen2.png screen3.png screen4.png 김여진_기말_수정.mp4
+images: https://www.youtube.com/watch?v=67QNfOF6r9o screen1.png screen2.png screen3.png screen4.png

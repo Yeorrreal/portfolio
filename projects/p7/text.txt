@@ -3,4 +3,4 @@ descKo:
 titleEn: Project 7
 descEn: 
 layout: img
-images: midtermanime_final.mp4
+images: https://www.youtube.com/watch?v=W0FLvXiSDm4

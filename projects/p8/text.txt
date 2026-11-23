@@ -3,4 +3,4 @@ descKo:
 titleEn: Project 8
 descEn: 
 layout: img img img img img img
-images: allegory.mp4 최종_1142.png 최종_1184.png 최종_1412.png 최종_1496.png 최종_1598.png
+images: https://www.youtube.com/watch?v=7IAPdtHZ_xo 최종_1142.png 최종_1184.png 최종_1412.png 최종_1496.png 최종_1598.png
