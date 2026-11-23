@@ -1,0 +1,6 @@
+titleKo: 서울대 종합화 80주년 기념 총동창회 달력
+descKo: 6인 팀 작업 — 달력면 편집디자인 담당.
+titleEn: 80th Anniversary SNU Alumni Calendar
+descEn: Team project of six — responsible for editorial design of the calendar spreads.
+layout: text img img
+images: birdeye_July.png screen1.png

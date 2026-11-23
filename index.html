@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kim Yeo Jin</title>
+  <style>
+
+    /* ── 폰트 ──────────────────────────── */
+    @font-face {
+      font-family: 'ABC Gaisyr Edu';
+      src: url('fonts/ABCGaisyrEdu-Book.otf') format('opentype');
+      font-weight: 400;
+    }
+    @font-face {
+      font-family: 'ABC Gaisyr Edu';
+      src: url('fonts/ABCGaisyrEdu-Regular.otf') format('opentype');
+      font-weight: 450;
+    }
+    @font-face {
+      font-family: 'ABC Gaisyr Edu';
+      src: url('fonts/ABCGaisyrEdu-Bold.otf') format('opentype');
+      font-weight: 700;
+    }
+    /*
+      Sandoll 폰트는 클라우드 활성화 → 시스템 폰트로 직접 참조
+      Sandoll Achim (이름), Sandoll Gothic (프로젝트 텍스트)
+    */
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: #fff; color: #000; }
+
+    /* ── 페이지 래퍼 ── */
+    .page {
+      display: flex;
+      width: 100vw;
+      padding: 40px 0 80px 26px;
+      gap: 19px;
+      position: relative;
+      align-items: flex-start;
+      overflow-x: clip;
+    }
+
+    /* ═══════════════════════════════
+       사이드바  358px  (Figma CSS 그대로)
+    ═══════════════════════════════ */
+    .sidebar {
+      display: flex;
+      width: 306px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 40px;
+    }
+
+    /* name-block: gap 14px */
+    .name-block {
+      width: 239px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* names: gap 6px */
+    .names { display: flex; flex-direction: column; gap: 6px; }
+
+    .name-ko {
+      font-family: 'Sandoll Achim', 'Apple SD Gothic Neo', sans-serif;
+      font-weight: 400;
+      font-size: 24px;
+      letter-spacing: 11.28px;
+      line-height: normal;
+      word-break: keep-all;
+    }
+    .name-en {
+      font-family: 'ABC Gaisyr Edu', serif;
+      font-weight: 400;
+      font-size: 16px;
+      letter-spacing: 0.96px;
+      line-height: normal;
+    }
+
+    .contact {
+      width: 198px;
+      height: 64px;
+      font-family: 'ABC Gaisyr Edu', serif;
+      font-weight: 400;
+      font-size: 14px;
+      letter-spacing: 0.84px;
+      line-height: normal;
+    }
+    .contact p { line-height: normal; margin: 0; }
+
+    .education {
+      font-family: 'ABC Gaisyr Edu', serif;
+      font-weight: 400;
+      font-size: 13px;
+      letter-spacing: 0.78px;
+      line-height: normal;
+    }
+    .education p { margin-bottom: 0; font-size: 13px; }
+    .education strong {
+      font-family: 'ABC Gaisyr Edu', serif;
+      font-weight: 700;
+      word-break: break-word;
+    }
+
+    /* ═══════════════════════════════
+       세로 장식선  14px
+    ═══════════════════════════════ */
+    .vline {
+      width: 14px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      align-self: flex-start;
+      background-image: url('pattern.svg');
+      background-repeat: repeat-y;
+      background-size: 5.67px 538.58px;
+      background-position: center top;
+    }
+
+    /* ═══════════════════════════════
+       우측 콘텐츠 영역 — 남은 너비 전부
+    ═══════════════════════════════ */
+    .content {
+      flex: 1;
+      min-width: 0;
+      padding: 0 1px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── 가로 구분선 (Figma: 19px tall, dashed SVG) ── */
+    .divider-h {
+      width: 100%;
+      height: 19px;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    /* ═══════════════════════════════
+       프로젝트 행
+    ═══════════════════════════════ */
+    .row {
+      height: 388px;
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* 이미지 스트립 — 가로 드래그 가능 */
+    .row-strip {
+      position: absolute;
+      top: 0;
+      left: 8px;             /* Figma: left-[8px] */
+      height: 388px;
+      display: flex;
+      align-items: flex-start;
+      gap: 13.427px;
+      cursor: grab;
+      user-select: none;
+    }
+    .row-strip.dragging { cursor: grabbing; }
+
+    /* 텍스트 컬럼 306px */
+    .proj-text {
+      width: 306px;
+      flex-shrink: 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .proj-ko-block {
+      font-family: 'Sandoll Gothic', 'Apple SD Gothic Neo', sans-serif;
+      font-weight: 400;
+      font-size: 0;
+      letter-spacing: -0.24px;
+      word-break: break-word;
+      flex-shrink: 0;
+    }
+    .proj-title-ko {
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 1.3;
+      display: block;
+    }
+    .proj-desc-ko {
+      font-size: 12px;
+      line-height: 1.3;
+      display: block;
+    }
+
+    /* 텍스트 사이 구분선 (184×24px SVG) */
+    .proj-tag {
+      width: 184px;
+      height: 24px;
+      flex-shrink: 0;
+      display: block;
+    }
+
+    .proj-en-block {
+      font-family: 'ABC Gaisyr Edu', serif;
+      font-weight: 400;
+      font-size: 0;
+      letter-spacing: -0.24px;
+      word-break: break-word;
+      flex: 1 0 1px;
+      min-height: 1px;
+    }
+    .proj-title-en {
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 1.3;
+      display: block;
+    }
+    .proj-desc-en {
+      font-size: 12px;
+      line-height: 1.3;
+      display: block;
+    }
+
+    /* 단일 이미지 슬롯 */
+    .img-slot {
+      flex-shrink: 0;
+      height: 388px;
+      width: auto;
+      cursor: pointer;
+      display: flex;
+      align-items: flex-start;
+    }
+    .img-slot img,
+    .img-slot video {
+      height: 388px;
+      width: auto;
+      display: block;
+      pointer-events: none;
+    }
+    .img-ph {
+      width: 260px;
+      height: 388px;
+      background: #e8e8e8;
+    }
+
+    /* 2×2 그리드 (Figma: w=535.702 h=383.744, inner gap 12.468px) */
+    .img-grid {
+      width: 536px;
+      height: 388px;
+      flex-shrink: 0;
+      display: grid;
+      grid-template-columns: 261.617px 261.617px;
+      grid-template-rows: 185.533px 185.533px;
+      gap: 12.468px;
+      align-content: start;
+    }
+    .img-grid .img-slot {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ═══════════════════════════════
+       라이트박스
+    ═══════════════════════════════ */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.9);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+    #lightbox.open { display: flex; }
+    #lightbox img, #lightbox video {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+    }
+    #lb-close {
+      position: fixed;
+      top: 28px; right: 36px;
+      font-family: 'ABC Gaisyr Edu', serif;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: #fff;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+
+<div id="lightbox">
+  <button id="lb-close">close ×</button>
+  <img id="lb-img" src="" alt="" />
+  <video id="lb-vid" controls playsinline style="display:none"></video>
+</div>
+
+<div class="page">
+
+  <!-- ── 사이드바 ── -->
+  <aside class="sidebar">
+    <div class="name-block">
+      <div class="names">
+        <div class="name-ko">김여진</div>
+        <div class="name-en">Kim Yeo Jin</div>
+      </div>
+      <div class="contact">
+        <p>yjrosie@gmail.com</p>
+        <p>@yeorrreal</p>
+      </div>
+    </div>
+    <div class="education">
+      <p>Graphic | Editorial | Branding | Illustration</p>
+      <p>
+        <strong>Seoul National University</strong> | BFA Candidate<br>
+        Visual Design | Aesthetic Studies Double Major<br>
+        2022 — Present
+      </p>
+      <p>
+        <strong>SOAS University of London</strong><br>
+        Exchange Student | Spring, 2026
+      </p>
+    </div>
+  </aside>
+
+  <!-- ── 세로 장식선 ── -->
+  <div class="vline"></div>
+
+  <!-- ── 우측 콘텐츠 ── -->
+  <div class="content" id="content"></div>
+
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════
+   projects/p1/text.txt, p2/text.txt ... 순서로 fetch.
+   404 나면 중단. 최대 20개.
+
+   text.txt 형식:
+     titleKo: 한글 제목
+     descKo: 한글 설명
+     titleEn: English title
+     descEn: English description
+     layout: text 428 503 grid
+     images: img1.png img2.png img3.png img4.png img5.png img6.png
+*/
+
+function parseTxt(txt, folder) {
+  const get = key => {
+    const m = txt.match(new RegExp(`^${key}:\\s*(.+)$`, 'm'));
+    return m ? m[1].trim() : '';
+  };
+  const layoutRaw = get('layout').split(/\s+/).map(v => isNaN(v) ? v : 'img');
+  const images = get('images').split(/\s+/).filter(Boolean).map(f => `${folder}/${f}`);
+  return {
+    titleKo: get('titleKo'), descKo: get('descKo'),
+    titleEn: get('titleEn'), descEn: get('descEn'),
+    layout: layoutRaw, images
+  };
+}
+
+async function loadProjects() {
+  const projects = [];
+  for (let i = 1; i <= 20; i++) {
+    const folder = `projects/p${i}`;
+    try {
+      const res = await fetch(`${folder}/text.txt`);
+      if (!res.ok) break;
+      const txt = await res.text();
+      projects.push(parseTxt(txt, folder));
+    } catch { break; }
+  }
+  return projects;
+}
+
+/* ═══ 렌더링 ═══ */
+const TAG_SVG  = 'assets/tag.svg';
+const DIV_SVG  = 'assets/divider-h.svg';
+
+function isVid(src) { return /\.(mp4|mov|webm)$/i.test(src); }
+
+function slot(src) {
+  let inner;
+  if (!src) {
+    inner = `<div class="img-ph"></div>`;
+  } else if (isVid(src)) {
+    inner = `<video src="${src}" muted loop playsinline preload="metadata"></video>`;
+  } else {
+    inner = `<img src="${src}" alt="" draggable="false">`;
+  }
+  return `<div class="img-slot"${src?` data-src="${src}"`:''}>${inner}</div>`;
+}
+
+function buildRow(p) {
+  let imgIdx = 0;
+
+  const stripItems = p.layout.map(item => {
+    if (item === 'text') {
+      return `
+        <div class="proj-text">
+          <div class="proj-ko-block">
+            <span class="proj-title-ko">${p.titleKo}</span>
+            <span class="proj-desc-ko">${p.descKo}</span>
+          </div>
+          <img class="proj-tag" src="${TAG_SVG}" alt="">
+          <div class="proj-en-block">
+            <span class="proj-title-en">${p.titleEn}</span>
+            <span class="proj-desc-en">${p.descEn}</span>
+          </div>
+        </div>`;
+    }
+    if (item === 'grid') {
+      const cells = [0,1,2,3].map(() => {
+        const src = p.images[imgIdx++] || '';
+        return `<div class="img-slot"${src?` data-src="${src}"`:''}>${src?`<img src="${src}" alt="" draggable="false">`:`<div class="img-ph"></div>`}</div>`;
+      }).join('');
+      return `<div class="img-grid">${cells}</div>`;
+    }
+    // 단일 이미지 (img 또는 숫자 — 모두 auto-width)
+    const src = p.images[imgIdx++] || '';
+    return slot(src);
+  }).join('');
+
+  return `
+    <div class="row">
+      <div class="row-strip">${stripItems}</div>
+    </div>`;
+}
+
+function render(projects) {
+  const el = document.getElementById('content');
+  el.innerHTML = projects.map((p, i) =>
+    (i > 0 ? `<img class="divider-h" src="${DIV_SVG}" alt="">` : '') + buildRow(p)
+  ).join('') + `<img class="divider-h" src="${DIV_SVG}" alt="">`;
+}
+
+loadProjects().then(projects => {
+  render(projects);
+  setupDrag();
+});
+
+/* ═══ 드래그 스크롤 ═══ */
+function setupDrag() {
+  document.querySelectorAll('.row').forEach(row => {
+    const strip = row.querySelector('.row-strip');
+    let down = false, startX = 0, curX = 0, moved = false;
+
+    strip.addEventListener('mousedown', e => {
+      e.preventDefault();
+      down = true; moved = false;
+      startX = e.clientX;
+      curX = strip._x || 0;
+      strip.classList.add('dragging');
+    });
+
+    window.addEventListener('mouseup', () => {
+      down = false;
+      strip.classList.remove('dragging');
+    });
+
+    window.addEventListener('mousemove', e => {
+      if (!down) return;
+      const dx = e.clientX - startX;
+      if (Math.abs(dx) > 3) moved = true;
+      const rowW = row.getBoundingClientRect().width;
+      const stripW = strip.getBoundingClientRect().width;
+      const minX = -(stripW - rowW + 8);
+      const newX = Math.min(0, Math.max(minX, curX + dx));
+      strip._x = newX;
+      strip.style.transform = `translateX(${newX}px)`;
+    });
+
+    /* 트랙패드 두 손가락 좌우 스크롤 */
+    row.addEventListener('wheel', e => {
+      if (Math.abs(e.deltaX) < Math.abs(e.deltaY)) return;
+      e.preventDefault();
+      const rowW = row.getBoundingClientRect().width;
+      const stripW = strip.getBoundingClientRect().width;
+      const minX = -(stripW - rowW + 8);
+      const newX = Math.min(0, Math.max(minX, (strip._x || 0) - e.deltaX));
+      strip._x = newX;
+      strip.style.transform = `translateX(${newX}px)`;
+    }, { passive: false });
+
+    /* 클릭 → 라이트박스 */
+    strip.addEventListener('click', e => {
+      if (moved) return;
+      const s = e.target.closest('[data-src]');
+      if (s) openLb(s.dataset.src);
+    });
+  });
+}
+
+setupDrag();
+
+/* ═══ 라이트박스 ═══ */
+const lb    = document.getElementById('lightbox');
+const lbImg = document.getElementById('lb-img');
+const lbVid = document.getElementById('lb-vid');
+document.getElementById('lb-close').onclick = closeLb;
+lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+
+function isVideo(src) { return /\.(mp4|mov|webm)$/i.test(src); }
+
+function openLb(src) {
+  if (isVideo(src)) {
+    lbImg.style.display = 'none';
+    lbVid.style.display = 'block';
+    lbVid.src = src;
+    lbVid.play();
+  } else {
+    lbVid.style.display = 'none';
+    lbImg.style.display = 'block';
+    lbImg.src = src;
+  }
+  lb.classList.add('open');
+}
+
+function closeLb() {
+  lb.classList.remove('open');
+  lbImg.src = '';
+  lbVid.pause();
+  lbVid.src = '';
+}
+</script>
+</body>
+</html>

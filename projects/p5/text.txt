@@ -1,0 +1,6 @@
+titleKo: 아고라 링
+descKo: 고대 철학자들의 논쟁을 링 위의 싸움으로 재해석한 철학 게임.
+titleEn: Agora Ring
+descEn: A philosophy game reinterpreting the debates of ancient philosophers as bouts in a boxing ring.
+layout: text img img img img img img img
+images: img0.jpeg img1.jpg img2.jpg img3.jpg img4.jpg img5.jpg img6.jpg

@@ -1,0 +1,6 @@
+titleKo: 프로젝트 9
+descKo: 
+titleEn: Project 9
+descEn: 
+layout: img img
+images: Artboard1.png poster2.png

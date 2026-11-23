@@ -1,0 +1,6 @@
+titleKo: 프로젝트 6
+descKo: 
+titleEn: Project 6
+descEn: 
+layout: img img img img img
+images: screen1.png screen2.png screen3.png screen4.png 김여진_기말_수정.mp4

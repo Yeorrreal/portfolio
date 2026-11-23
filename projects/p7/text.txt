@@ -1,0 +1,6 @@
+titleKo: 프로젝트 7
+descKo: 
+titleEn: Project 7
+descEn: 
+layout: img
+images: midtermanime_final.mp4

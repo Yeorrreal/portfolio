@@ -1,0 +1,6 @@
+titleKo: 
+descKo: 
+titleEn: 
+descEn: 
+layout: img img img img img img
+images: Artboard20copy@3x.png Artboard20copy2@3x.png Artboard20copy3@3x.png IMG_5405.jpeg KakaoTalk_Photo_2026-06-04-15-40-24011.png MerryChristmas.gif

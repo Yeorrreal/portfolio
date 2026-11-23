@@ -1,0 +1,6 @@
+titleKo: 세 번째 프로젝트
+descKo: 설명을 여기에 입력하세요.
+titleEn: Third Project
+descEn: Description goes here.
+layout: img img img img img img img img
+images: Artboard4.png envelope.png martyrs_fin06107.jpg martyrs_fin06108.jpg martyrs_fin06109.jpg Scan27.jpeg Scan29.jpeg pietro.png
